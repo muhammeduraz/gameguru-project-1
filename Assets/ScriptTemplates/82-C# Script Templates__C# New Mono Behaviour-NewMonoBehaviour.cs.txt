@@ -16,7 +16,6 @@ namespace Assets.Scripts
 
         #endregion Properties
 
-
         #region Functions
 
         
