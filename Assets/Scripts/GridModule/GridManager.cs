@@ -3,7 +3,7 @@ using Zenject;
 
 namespace Assets.Scripts.GridModule
 {
-    public class GridManager : IDisposable
+    public class GridManager : IInitializable, IDisposable
     {
         #region Variables
 
@@ -23,7 +23,10 @@ namespace Assets.Scripts.GridModule
             _gridArray = _gridCreator.CreateGrid(2);
 
             SetupGrid(2);
+        }
 
+        public void Initialize()
+        {
             _signalBus.Subscribe<SetupGridSignal>(OnSetupGridSignalFired);
         }
 
@@ -41,9 +44,9 @@ namespace Assets.Scripts.GridModule
             _gridArray = _gridCreator.CreateGrid(size);
         }
 
-        private void OnSetupGridSignalFired()
+        private void OnSetupGridSignalFired(SetupGridSignal setupGridSignal)
         {
-            
+            SetupGrid(setupGridSignal.Size);
         }
 
         #endregion Functions
