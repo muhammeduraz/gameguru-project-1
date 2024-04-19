@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4371118241177018833}
   - component: {fileID: 9111250540579783048}
   m_Layer: 0
-  m_Name: GridManagerFacade
+  m_Name: GridModuleFacade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

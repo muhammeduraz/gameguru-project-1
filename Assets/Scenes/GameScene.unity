@@ -504,7 +504,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8597607987994391534, guid: f23ef55d909a4274393719cf1aba171b, type: 3}
       propertyPath: m_Name
-      value: GridManagerFacade
+      value: GridModuleFacade
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

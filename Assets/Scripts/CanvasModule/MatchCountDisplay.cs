@@ -39,7 +39,7 @@ namespace Assets.Scripts.CanvasModule
 
         private void OnMatchSignalFired(MatchOccuredSignal matchOccuredSignal)
         {
-            SetMatchCountText(matchOccuredSignal.MatchCount);
+            SetMatchCountText(matchOccuredSignal.TotalMatchCount);
         }
 
         private void SetMatchCountText(int matchCount)

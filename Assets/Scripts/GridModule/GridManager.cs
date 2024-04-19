@@ -13,6 +13,12 @@ namespace Assets.Scripts.GridModule
         private GridCreator _gridCreator;
 
         #endregion Variables
+        
+        #region Properties
+
+        public Grid[,] GridArray { get => _gridArray; }
+
+        #endregion Properties
 
         #region Functions
 

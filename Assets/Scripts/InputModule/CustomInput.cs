@@ -60,7 +60,7 @@ namespace Assets.Scripts.InputModule
 
         public void Dispose()
         {
-            
+            _timer = null;
         }
 
         private void OnButtonDown()
