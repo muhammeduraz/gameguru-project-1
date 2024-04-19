@@ -1,10 +1,14 @@
-namespace Zenject.Tests.TestDestructionOrder
+namespace Zenject
 {
     public class ProjectInstaller : MonoInstaller<ProjectInstaller>
     {
+        #region Functions
+
         public override void InstallBindings()
         {
-            Container.BindInterfacesTo<FooDisposable3>().AsSingle();
+            SignalBusInstaller.Install(Container);
         }
+
+        #endregion Functions
     }
 }
