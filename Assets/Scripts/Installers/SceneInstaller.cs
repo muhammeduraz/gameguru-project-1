@@ -1,6 +1,8 @@
 using Zenject;
 using Assets.Scripts.GridModule;
+using Assets.Scripts.InputModule;
 using Assets.Scripts.MatchModule;
+using Assets.Scripts.TimerModule;
 
 namespace Assets.Scripts.Installers
 {
@@ -11,7 +13,11 @@ namespace Assets.Scripts.Installers
         public override void InstallBindings()
         {
             GridSignalInstaller.Install(Container);
+            InputSignalInstaller.Install(Container);
             MatchSignalInstaller.Install(Container);
+
+            Container.BindInterfacesAndSelfTo<Timer>().AsTransient();
+            Container.BindInterfacesAndSelfTo<CustomInput>().AsSingle();
         }
 
         #endregion Functions
