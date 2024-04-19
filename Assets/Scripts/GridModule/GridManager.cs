@@ -47,7 +47,13 @@ namespace Assets.Scripts.GridModule
 
         private void SetupGrid(int size)
         {
+            ResetFlagStatusOfAllGrids();
             _gridArray = _gridCreator.CreateGrid(size);
+        }
+
+        private void ResetFlagStatusOfAllGrids()
+        {
+            foreach (Grid grid in _gridArray) grid.SetAsUnflagged();
         }
 
         private void OnSetupGridSignalFired(SetupGridSignal setupGridSignal)
