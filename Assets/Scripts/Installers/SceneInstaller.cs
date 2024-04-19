@@ -1,5 +1,6 @@
 using Zenject;
 using Assets.Scripts.GridModule;
+using Assets.Scripts.MatchModule;
 
 namespace Assets.Scripts.Installers
 {
@@ -10,6 +11,7 @@ namespace Assets.Scripts.Installers
         public override void InstallBindings()
         {
             GridSignalInstaller.Install(Container);
+            MatchSignalInstaller.Install(Container);
         }
 
         #endregion Functions
