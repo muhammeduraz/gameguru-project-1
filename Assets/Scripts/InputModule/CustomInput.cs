@@ -48,7 +48,7 @@ namespace Assets.Scripts.InputModule
             {
                 OnButtonDown();
             }
-            else if(Input.GetMouseButton(0))
+            else if (Input.GetMouseButton(0))
             {
                 OnButton();
             }
@@ -77,7 +77,7 @@ namespace Assets.Scripts.InputModule
         private void OnButtonUp()
         {
             float distance = Vector3.Distance(_mouseDownPosition, MousePosition);
-            
+
             if (!_timer.IsTimeUp && distance < _tapDistanceThreshold)
             {
                 _signalBus.Fire(new InputTapSignal(MousePosition));

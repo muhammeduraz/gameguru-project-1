@@ -35,6 +35,7 @@ namespace Assets.Scripts.CanvasModule
 
         private void FireSetupGridSignal()
         {
+            if (_inputField.text == string.Empty) return;
             _signalBus.Fire(new SetupGridSignal(int.Parse(_inputField.text)));
         }
 

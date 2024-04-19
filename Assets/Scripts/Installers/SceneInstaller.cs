@@ -18,6 +18,7 @@ namespace Assets.Scripts.Installers
 
             Container.BindInterfacesAndSelfTo<Timer>().AsTransient();
             Container.BindInterfacesAndSelfTo<CustomInput>().AsSingle();
+            Container.BindInterfacesAndSelfTo<GridSelector>().AsSingle();
         }
 
         #endregion Functions

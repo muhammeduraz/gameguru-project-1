@@ -7,7 +7,7 @@ namespace Assets.Scripts.GridModule
     {
         #region Variables
 
-        private bool _flag;
+        private bool _flagged;
 
         [Header("Settings")]
         [SerializeField] private float _colorChangeDuration;
@@ -15,13 +15,14 @@ namespace Assets.Scripts.GridModule
         [SerializeField] private Color _lightenColor;
 
         [Header("Components")]
-        [SerializeField] private SpriteRenderer _spriteRenderer;
+        [SerializeField] private SpriteRenderer _xRenderer;
+        [SerializeField] private SpriteRenderer _backgroundRenderer;
 
         #endregion Variables
         
         #region Properties
 
-        public bool Flag { get => _flag; }
+        public bool Flagged { get => _flagged; }
 
         #endregion Properties
 
@@ -39,22 +40,24 @@ namespace Assets.Scripts.GridModule
 
         public void SetAsFlagged()
         {
-            _flag = true;
+            _flagged = true;
+            _xRenderer.enabled = true;
         }
 
         public void SetAsUnflagged()
         {
-            _flag = false;
+            _flagged = false;
+            _xRenderer.enabled = false;
         }
 
         private void Lighten()
         {
-            _spriteRenderer.DOColor(_lightenColor, _colorChangeDuration);
+            _backgroundRenderer.DOColor(_lightenColor, _colorChangeDuration);
         }
 
         private void Darken()
         {
-            _spriteRenderer.DOColor(_darkenColor, _colorChangeDuration);
+            _backgroundRenderer.DOColor(_darkenColor, _colorChangeDuration);
         }
 
         public void OnHoverEnter()

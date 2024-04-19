@@ -8,6 +8,7 @@ namespace Assets.Scripts.InputModule
 
         public override void InstallBindings()
         {
+            Container.DeclareSignal<InputTapSignal>();
             Container.DeclareSignal<ChangeInputStateSignal>();
         }
 
