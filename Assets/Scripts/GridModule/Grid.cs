@@ -1,4 +1,5 @@
 using UnityEngine;
+using DG.Tweening;
 
 namespace Assets.Scripts.GridModule
 {
@@ -8,6 +9,12 @@ namespace Assets.Scripts.GridModule
 
         private bool _flag;
 
+        [Header("Settings")]
+        [SerializeField] private float _colorChangeDuration;
+        [SerializeField] private Color _darkenColor;
+        [SerializeField] private Color _lightenColor;
+
+        [Header("Components")]
         [SerializeField] private SpriteRenderer _spriteRenderer;
 
         #endregion Variables
@@ -42,12 +49,12 @@ namespace Assets.Scripts.GridModule
 
         private void Lighten()
         {
-
+            _spriteRenderer.DOColor(_lightenColor, _colorChangeDuration);
         }
 
         private void Darken()
         {
-
+            _spriteRenderer.DOColor(_darkenColor, _colorChangeDuration);
         }
 
         public void OnHoverEnter()
