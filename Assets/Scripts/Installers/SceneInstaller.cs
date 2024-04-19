@@ -3,7 +3,6 @@ using UnityEngine;
 using Assets.Scripts.GridModule;
 using Assets.Scripts.InputModule;
 using Assets.Scripts.MatchModule;
-using Assets.Scripts.TimerModule;
 using Grid = Assets.Scripts.GridModule.Grid;
 
 namespace Assets.Scripts.Installers
@@ -24,7 +23,6 @@ namespace Assets.Scripts.Installers
             InputSignalInstaller.Install(Container);
             MatchSignalInstaller.Install(Container);
 
-            Container.BindInterfacesAndSelfTo<Timer>().AsTransient();
             Container.BindInterfacesAndSelfTo<CustomInput>().AsSingle();
 
             Container.BindMemoryPool<Grid, GridPool>().FromComponentInNewPrefab(_gridPrefab);
