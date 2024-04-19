@@ -7,7 +7,6 @@ namespace Assets.Scripts.TimerModule
     {
         #region Variables
 
-        private float _time;
         private float _timer;
 
         #endregion Variables
@@ -33,13 +32,11 @@ namespace Assets.Scripts.TimerModule
 
         public void SetTimer(float time)
         {
-            _time = time;
-            _timer = 0;
+            _timer = time;
         }
 
         public void Reset()
         {
-            _time = 0f;
             _timer = 0f;
         }
 
