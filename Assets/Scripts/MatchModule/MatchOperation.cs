@@ -1,5 +1,6 @@
 using System;
 using Zenject;
+using System.Linq;
 using Assets.Scripts.GridModule;
 using System.Collections.Generic;
 
@@ -10,10 +11,15 @@ namespace Assets.Scripts.MatchModule
         #region Variables
 
         private int _matchCount;
+        private int _countForMatch = 3;
+
+        private Grid _cacheGrid;
 
         private SignalBus _signalBus;
         private GridManager _gridManager;
 
+        private List<Grid> _wbcGridList;
+        private List<Grid> _tempGridList;
         private List<Grid> _cacheMatchedGridList;
 
         #endregion Variables
@@ -29,7 +35,11 @@ namespace Assets.Scripts.MatchModule
         public void Initialize()
         {
             _matchCount = 0;
+
+            _wbcGridList = new();
+            _tempGridList = new();
             _cacheMatchedGridList = new();
+
             _signalBus.Subscribe<GridFlaggedSignal>(OnGridFlaggedSignalFired);
         }
 
@@ -41,33 +51,12 @@ namespace Assets.Scripts.MatchModule
 
         private void OnGridFlaggedSignalFired(GridFlaggedSignal gridFlaggedSignal)
         {
-            MatchSequence(gridFlaggedSignal.Grid);
+            MatchIfPossible(gridFlaggedSignal.Grid);
         }
 
-        private void OnMatchOccured()
-        {
-            _matchCount++;
-            _cacheMatchedGridList.ForEach(grid => grid.SetAsUnflagged());
-
-            _signalBus.Fire(new MatchOccuredSignal(_matchCount));
-        }
-
-        private void OnMatchNotOccured()
-        {
-
-        }
-
-        private bool DetectMatch(Grid grid)
-        {
-            _cacheMatchedGridList.Clear();
-
-            return true;
-        }
-
-        private void MatchSequence(Grid grid)
+        private void MatchIfPossible(Grid grid)
         {
             bool matchDetected = DetectMatch(grid);
-            matchDetected = true;
             if (!matchDetected)
             {
                 OnMatchNotOccured();
@@ -75,6 +64,53 @@ namespace Assets.Scripts.MatchModule
             }
 
             OnMatchOccured();
+        }
+
+        private void OnMatchOccured()
+        {
+            _matchCount++;
+
+            _cacheMatchedGridList.ForEach(grid => grid.SetAsUnflagged());
+            _cacheMatchedGridList.Clear();
+
+            _signalBus.Fire(new MatchOccuredSignal(_matchCount));
+        }
+
+        private void OnMatchNotOccured()
+        {
+            _cacheMatchedGridList.Clear();
+        }
+
+        private bool DetectMatch(Grid grid)
+        {
+            _cacheMatchedGridList.Clear();
+            _cacheMatchedGridList.Add(grid);
+
+            _wbcGridList.Clear();
+            _tempGridList = _gridManager.GetFlaggedNeighbours(grid);
+            _tempGridList.ForEach(grid => _wbcGridList.Add(grid));
+
+            while (_wbcGridList.Count > 0)
+            {
+                _cacheGrid = _wbcGridList.FirstOrDefault();
+                _wbcGridList.Remove(_cacheGrid);
+
+                if (_cacheMatchedGridList.Contains(_cacheGrid)) continue;
+                _cacheMatchedGridList.Add(_cacheGrid);
+
+                _tempGridList = _gridManager.GetFlaggedNeighbours(_cacheGrid);
+                foreach (Grid loopGrid in _tempGridList)
+                {
+                    if (_wbcGridList.Contains(loopGrid) || _cacheMatchedGridList.Contains(loopGrid)) continue;
+                    _wbcGridList.Add(loopGrid);
+                }
+            }
+
+            _wbcGridList.Clear();
+            _tempGridList.Clear();
+
+            if (_cacheMatchedGridList.Count < _countForMatch) return false;
+            return true;
         }
 
         #endregion Functions

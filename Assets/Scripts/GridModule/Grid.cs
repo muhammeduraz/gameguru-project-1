@@ -1,5 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
+using Unity.Mathematics;
 
 namespace Assets.Scripts.GridModule
 {
@@ -8,6 +9,9 @@ namespace Assets.Scripts.GridModule
         #region Variables
 
         private bool _flagged;
+
+        [Header("Settings")]
+        [SerializeField] private int2 _index;
 
         [Header("Settings")]
         [SerializeField] private float _colorChangeDuration;
@@ -23,6 +27,7 @@ namespace Assets.Scripts.GridModule
         #region Properties
 
         public bool Flagged { get => _flagged; }
+        public int2 Index { get => _index; set => _index = value; }
 
         #endregion Properties
 

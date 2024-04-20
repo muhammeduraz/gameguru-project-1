@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Unity.Mathematics;
 
 namespace Assets.Scripts.GridModule
 {
@@ -39,14 +40,15 @@ namespace Assets.Scripts.GridModule
 
             Vector2 instantiatePosition = topLeftGridPosition;
 
-            for (int i = 0; i < gridSize; i++)
+            for (int x = 0; x < gridSize; x++)
             {
-                for (int j = 0; j < gridSize; j++)
+                for (int y = 0; y < gridSize; y++)
                 {
                     _cacheGrid = _gridPool.Spawn();
+                    _cacheGrid.Index = new int2(x, y);
                     _cacheGrid.transform.position = instantiatePosition;
 
-                    _gridArray[i, j] = _cacheGrid;
+                    _gridArray[x, y] = _cacheGrid;
                     instantiatePosition.x += 1f;
                 }
 
