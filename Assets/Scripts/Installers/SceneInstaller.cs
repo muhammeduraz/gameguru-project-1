@@ -11,6 +11,7 @@ namespace Assets.Scripts.Installers
     {
         #region Variables
 
+        [Header("References")]
         [SerializeField] private Grid _gridPrefab;
 
         #endregion Variables
