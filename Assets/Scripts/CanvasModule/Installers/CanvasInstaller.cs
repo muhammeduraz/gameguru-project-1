@@ -7,6 +7,7 @@ namespace Assets.Scripts.CanvasModule
     {
         #region Variables
 
+        [Header("References")]
         [SerializeField] private SetupGridButton _setupGridButton;
         [SerializeField] private MatchCounterDisplay _matchCountDisplay;
 

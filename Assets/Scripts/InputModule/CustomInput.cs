@@ -11,13 +11,11 @@ namespace Assets.Scripts.InputModule
 
         private bool _isActive;
 
-        private float _tapTimeThreshold = 0.2f;
-        private float _tapDistanceThreshold = 5f;
-
         private Vector3 _mouseDownPosition;
         
         private Timer _timer;
         private SignalBus _signalBus;
+        private CustomInputSettingsSO _settings;
 
         #endregion Variables
 
@@ -29,9 +27,10 @@ namespace Assets.Scripts.InputModule
 
         #region Functions
 
-        public CustomInput(Timer timer, SignalBus signalBus)
+        public CustomInput(Timer timer, SignalBus signalBus, CustomInputSettingsSO settings)
         {
             _timer = timer;
+            _settings = settings;
             _signalBus = signalBus;
         }
 
@@ -66,7 +65,7 @@ namespace Assets.Scripts.InputModule
         private void OnButtonDown()
         {
             _mouseDownPosition = MousePosition;
-            _timer.SetTimer(_tapTimeThreshold);
+            _timer.SetTimer(_settings.TapTimeThreshold);
         }
 
         private void OnButton()
@@ -78,7 +77,7 @@ namespace Assets.Scripts.InputModule
         {
             float distance = Vector3.Distance(_mouseDownPosition, MousePosition);
 
-            if (!_timer.IsTimeUp && distance < _tapDistanceThreshold)
+            if (!_timer.IsTimeUp && distance < _settings.TapDistanceThreshold)
             {
                 _signalBus.Fire(new InputTapSignal(MousePosition));
             }
