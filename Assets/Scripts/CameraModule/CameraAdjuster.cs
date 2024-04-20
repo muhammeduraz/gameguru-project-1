@@ -35,13 +35,9 @@ namespace Assets.Scripts.CameraModule
 
         private void OnGridBuilSignalFired(GridBuilSignal gridBuilSignal)
         {
-            Vector3 newPosition = _mainCamera.transform.position;
-            newPosition.y = gridBuilSignal.Size / 2f * -1f;
-            //_mainCamera.transform.position = newPosition;
-
             float aspectRatio = (float)Screen.height / Screen.width;
-            Debug.Log(aspectRatio);
             float newOrthoSize = gridBuilSignal.Size * aspectRatio * 0.5f;
+
             _mainCamera.orthographicSize = newOrthoSize;
         }
 
