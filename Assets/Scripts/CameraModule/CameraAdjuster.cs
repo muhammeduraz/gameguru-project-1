@@ -24,18 +24,25 @@ namespace Assets.Scripts.CameraModule
 
         public void Initialize()
         {
-            _signalBus.Subscribe<SetupGridSignal>(OnSetupGridSignalFired);
+            _signalBus.Subscribe<GridBuilSignal>(OnGridBuilSignalFired);
         }
 
         public void Dispose()
         {
-            _signalBus.Unsubscribe<SetupGridSignal>(OnSetupGridSignalFired);
+            _signalBus.Unsubscribe<GridBuilSignal>(OnGridBuilSignalFired);
             _signalBus = null;
         }
 
-        private void OnSetupGridSignalFired(SetupGridSignal setupGridSignal)
+        private void OnGridBuilSignalFired(GridBuilSignal gridBuilSignal)
         {
-            _mainCamera.orthographicSize = setupGridSignal.Size;
+            Vector3 newPosition = _mainCamera.transform.position;
+            newPosition.y = gridBuilSignal.Size / 2f * -1f;
+            //_mainCamera.transform.position = newPosition;
+
+            float aspectRatio = (float)Screen.height / Screen.width;
+            Debug.Log(aspectRatio);
+            float newOrthoSize = gridBuilSignal.Size * aspectRatio * 0.5f;
+            _mainCamera.orthographicSize = newOrthoSize;
         }
 
         #endregion Functions
