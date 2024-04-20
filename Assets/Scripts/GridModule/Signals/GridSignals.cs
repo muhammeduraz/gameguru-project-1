@@ -13,6 +13,17 @@ namespace Assets.Scripts.GridModule
         }
     }
 
+    public struct GridBuilSignal
+    {
+        private int _size;
+        public int Size { get => _size; }
+
+        public GridBuilSignal(int size)
+        {
+            _size = size;
+        }
+    }
+
     public struct GridFlaggedSignal
     {
         private Grid _grid;

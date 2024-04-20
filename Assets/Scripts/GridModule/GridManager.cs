@@ -66,6 +66,8 @@ namespace Assets.Scripts.GridModule
 
             ResetFlagStatusOfAllGrids();
             _gridArray = _gridCreator.CreateGrid(size);
+
+            _signalBus.Fire(new GridBuilSignal(size));
         }
 
         private void ResetFlagStatusOfAllGrids()
