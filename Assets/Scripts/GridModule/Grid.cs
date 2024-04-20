@@ -32,17 +32,7 @@ namespace Assets.Scripts.GridModule
         #endregion Properties
 
         #region Functions
-
-        public void Initialize()
-        {
-
-        }
-
-        public void Terminate()
-        {
-
-        }
-
+        
         public void SetAsFlagged()
         {
             _flagged = true;
