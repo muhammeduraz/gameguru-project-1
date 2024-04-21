@@ -1,5 +1,6 @@
 using Zenject;
 using UnityEngine;
+using Assets.Scripts.InputModule.Data;
 
 namespace Assets.Scripts.InputModule
 {

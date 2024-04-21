@@ -2,6 +2,7 @@ using System;
 using Zenject;
 using UnityEngine;
 using Assets.Scripts.TimerModule;
+using Assets.Scripts.InputModule.Data;
 
 namespace Assets.Scripts.InputModule
 {

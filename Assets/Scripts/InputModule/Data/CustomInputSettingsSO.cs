@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Assets.Scripts.InputModule
+namespace Assets.Scripts.InputModule.Data
 {
     [CreateAssetMenu(fileName = "CustomInputSettingsSO", menuName = "Scriptable Objects/CustomInputSettingsSO")]
     public class CustomInputSettingsSO : ScriptableObject
