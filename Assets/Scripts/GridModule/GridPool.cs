@@ -4,6 +4,8 @@ namespace Assets.Scripts.GridModule
 {
     public class GridPool : MonoMemoryPool<Grid>
     {
+        #region Functions
+
         protected override void OnCreated(Grid item)
         {
             base.OnCreated(item);
@@ -28,5 +30,7 @@ namespace Assets.Scripts.GridModule
         {
             base.Reinitialize(item);
         }
+
+        #endregion Functions
     }
 }

@@ -24,7 +24,7 @@ namespace Assets.Scripts.Installers
             InputSignalInstaller.Install(Container);
             MatchSignalInstaller.Install(Container);
 
-            Container.BindMemoryPool<Grid, GridPool>().FromComponentInNewPrefab(_gridPrefab).AsTransient();
+            Container.BindMemoryPool<Grid, GridPool>().FromComponentInNewPrefab(_gridPrefab).AsSingle();
             Container.BindInterfacesAndSelfTo<GridCreator>().AsSingle();
             Container.BindInterfacesAndSelfTo<GridManager>().AsSingle();
             Container.BindInterfacesAndSelfTo<GridSelector>().AsSingle();
