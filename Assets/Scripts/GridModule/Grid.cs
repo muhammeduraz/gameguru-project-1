@@ -1,7 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
 using Unity.Mathematics;
-using UnityEngine.EventSystems;
 
 namespace Assets.Scripts.GridModule
 {
@@ -32,8 +31,24 @@ namespace Assets.Scripts.GridModule
 
         #endregion Properties
 
+        #region Unity Functions
+
+        private void OnMouseEnter()
+        {
+            if (_flagged) return;
+            Darken();
+        }
+
+        private void OnMouseExit()
+        {
+            if (_flagged) return;
+            Lighten();
+        }
+
+        #endregion Unity Functions
+
         #region Functions
-        
+
         public void SetAsFlagged()
         {
             _flagged = true;
@@ -64,17 +79,6 @@ namespace Assets.Scripts.GridModule
         }
 
         public void OnHoverExit()
-        {
-            Lighten();
-        }
-
-        private void OnMouseEnter()
-        {
-            if (_flagged) return;
-            Darken();
-        }
-
-        private void OnMouseExit()
         {
             Lighten();
         }
