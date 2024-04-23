@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.CanvasModule
 {
-    public class CanvasInstaller : MonoInstaller
+    public class CanvasModuleInstaller : MonoInstaller
     {
         #region Variables
 

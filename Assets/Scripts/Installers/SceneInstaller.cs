@@ -20,9 +20,9 @@ namespace Assets.Scripts.Installers
 
         public override void InstallBindings()
         {
-            GridSignalInstaller.Install(Container);
-            InputSignalInstaller.Install(Container);
-            MatchSignalInstaller.Install(Container);
+            GridModuleSignalInstaller.Install(Container);
+            InputModuleSignalInstaller.Install(Container);
+            MatchModuleSignalInstaller.Install(Container);
 
             Container.BindMemoryPool<Grid, GridPool>().FromComponentInNewPrefab(_gridPrefab).AsSingle();
             Container.BindInterfacesAndSelfTo<GridCreator>().AsSingle();

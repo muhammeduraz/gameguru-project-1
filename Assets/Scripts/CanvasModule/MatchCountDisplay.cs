@@ -10,7 +10,7 @@ namespace Assets.Scripts.CanvasModule
     {
         #region Variables
 
-        private const string MatchCountText = "Match count: ";
+        private readonly string MatchCountText = "Match count: ";
 
         private SignalBus _signalBus;
 

@@ -2,7 +2,7 @@ using Zenject;
 
 namespace Assets.Scripts.MatchModule
 {
-    public class MatchSignalInstaller : Installer<MatchSignalInstaller>
+    public class MatchModuleSignalInstaller : Installer<MatchModuleSignalInstaller>
     {
         #region Functions
 

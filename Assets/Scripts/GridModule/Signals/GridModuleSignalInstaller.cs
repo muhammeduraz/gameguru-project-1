@@ -2,7 +2,7 @@ using Zenject;
 
 namespace Assets.Scripts.GridModule
 {
-    public class GridSignalInstaller : Installer<GridSignalInstaller>
+    public class GridModuleSignalInstaller : Installer<GridModuleSignalInstaller>
     {
         public override void InstallBindings()
         {

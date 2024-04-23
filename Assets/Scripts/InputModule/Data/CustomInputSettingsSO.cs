@@ -8,7 +8,7 @@ namespace Assets.Scripts.InputModule.Data
         #region Variables
 
         [SerializeField] private float _tapTimeThreshold = 0.2f;
-        [SerializeField] private float _tapDistanceThreshold = 5f;
+        [SerializeField] private float _tapDistanceThreshold = 5.0f;
 
         #endregion Variables
 

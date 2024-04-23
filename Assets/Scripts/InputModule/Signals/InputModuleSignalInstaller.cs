@@ -2,7 +2,7 @@ using Zenject;
 
 namespace Assets.Scripts.InputModule
 {
-    public class InputSignalInstaller : Installer<InputSignalInstaller>
+    public class InputModuleSignalInstaller : Installer<InputModuleSignalInstaller>
     {
         #region Functions
 

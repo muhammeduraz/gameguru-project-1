@@ -56,6 +56,9 @@ namespace Assets.Scripts.GridModule
             _gridArray = null;
             _gridCreator = null;
 
+            _cacheGridList = null;
+            _indexOffsetList = null;
+
             _signalBus.Unsubscribe<SetupGridSignal>(OnSetupGridSignalFired);
             _signalBus = null;
         }

@@ -11,7 +11,7 @@ namespace Assets.Scripts.MatchModule
         #region Variables
 
         private int _matchCount;
-        private int _countForMatch = 3;
+        private const int CountForMatch = 3;
 
         private Grid _cacheGrid;
 
@@ -45,6 +45,13 @@ namespace Assets.Scripts.MatchModule
 
         public void Dispose()
         {
+            _cacheGrid = null;
+            _gridManager = null;
+
+            _wbcGridList = null;
+            _tempGridList = null;
+            _cacheMatchedGridList = null;
+
             _signalBus.Unsubscribe<GridFlaggedSignal>(OnGridFlaggedSignalFired);
             _signalBus = null;
         }
@@ -109,7 +116,7 @@ namespace Assets.Scripts.MatchModule
             _wbcGridList.Clear();
             _tempGridList.Clear();
 
-            if (_cacheMatchedGridList.Count < _countForMatch) return false;
+            if (_cacheMatchedGridList.Count < CountForMatch) return false;
             return true;
         }
 

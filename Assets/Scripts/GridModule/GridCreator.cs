@@ -24,6 +24,13 @@ namespace Assets.Scripts.GridModule
             _gridPool = gridPool;
         }
 
+        public void Dispose()
+        {
+            _gridPool = null;
+            _cacheGrid = null;
+            _gridArray = null;
+        }
+
         public Grid[,] CreateGrid(int gridSize)
         {
             DespawnActiveGrids();
@@ -67,11 +74,6 @@ namespace Assets.Scripts.GridModule
             {
                 _gridPool.Despawn(grid);
             }
-        }
-
-        public void Dispose()
-        {
-            _gridPool = null;
         }
 
         #endregion Functions
