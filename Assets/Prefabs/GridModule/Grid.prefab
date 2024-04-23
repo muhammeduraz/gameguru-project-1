@@ -134,7 +134,7 @@ MonoBehaviour:
     x: 0
     y: 0
   _colorChangeDuration: 0.25
-  _darkenColor: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
+  _darkenColor: {r: 0.8235294, g: 0.8235294, b: 0.8235294, a: 1}
   _lightenColor: {r: 1, g: 1, b: 1, a: 1}
   _xRenderer: {fileID: 1505010902546892323}
   _backgroundRenderer: {fileID: 5226988618981511065}
